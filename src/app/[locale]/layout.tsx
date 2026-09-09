@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Poppins, Plus_Jakarta_Sans } from "next/font/google";
 import "../globals.css";
+import { poppins, jakarta } from "@/fonts";
 import { isLocale, locales } from "@/lib/i18n";
 import type { Locale } from "@/content/types";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

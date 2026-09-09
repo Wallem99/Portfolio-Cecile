@@ -61,17 +61,33 @@ for (const entry of entries) {
 console.log(`Done. Converted: ${ok}, Failed: ${failed}, Total: ${entries.length}`);
 
 // Also copy the CV PDF into public/ for the download button.
-// (Find it dynamically — the filename uses a combining accent character.)
-const pdfName = fs.readdirSync(repoRoot).find((f) => f.toLowerCase().endsWith(".pdf"));
-if (!pdfName) {
+// The repo root can hold more than one CV over time (e.g. a 2025 and a
+// 2026 version) — pick the most recently modified one rather than just
+// "the first .pdf found", so this stays correct as new CVs are added.
+// IMPORTANT: after running this, update the filename in
+// src/app/api/cv/route.ts to match the one logged below.
+const pdfCandidates = fs
+  .readdirSync(repoRoot)
+  .filter((f) => f.toLowerCase().endsWith(".pdf"))
+  .map((f) => ({ name: f, mtime: fs.statSync(path.join(repoRoot, f)).mtimeMs }))
+  .sort((a, b) => b.mtime - a.mtime);
+
+if (pdfCandidates.length === 0) {
   console.error("WARNING: no CV PDF found in repo root, skipping copy.");
 } else {
+  const { name: pdfName } = pdfCandidates[0];
   const CV_PATH = path.join(repoRoot, pdfName);
   const publicDir = path.join(projectRoot, "public");
   fs.mkdirSync(publicDir, { recursive: true });
-  fs.copyFileSync(
-    CV_PATH,
-    path.join(publicDir, "cv-ngo-ntonga-cecile-claude-2025.pdf")
-  );
-  console.log("Copied CV PDF to public/");
+  const destName = "cv-ngo-ntonga-cecile-claude.pdf";
+  fs.copyFileSync(CV_PATH, path.join(publicDir, destName));
+  console.log(`Copied most recent CV PDF (${pdfName}) to public/${destName}`);
+  if (pdfCandidates.length > 1) {
+    console.log(
+      `Note: ${pdfCandidates.length} PDFs found in repo root; ignored older ones: ${pdfCandidates
+        .slice(1)
+        .map((c) => c.name)
+        .join(", ")}`
+    );
+  }
 }

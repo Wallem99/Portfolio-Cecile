@@ -5,7 +5,7 @@ import path from "node:path";
 const CV_PATH = path.join(
   process.cwd(),
   "public",
-  "cv-ngo-ntonga-cecile-claude-2025.pdf"
+  "cv-ngo-ntonga-cecile-claude.pdf"
 );
 const CV_FILENAME = "CV - Cecile Claude Ngo Ntonga.pdf";
 
