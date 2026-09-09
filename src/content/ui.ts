@@ -3,6 +3,7 @@ import type { L } from "./types";
 export const nav = {
   home: { fr: "Accueil", en: "Home" } satisfies L,
   profile: { fr: "Profil", en: "Profile" } satisfies L,
+  services: { fr: "Services", en: "Services" } satisfies L,
   projects: { fr: "Projets", en: "Projects" } satisfies L,
   contact: { fr: "Contact", en: "Contact" } satisfies L,
   contactCta: { fr: "Me contacter", en: "Contact me" } satisfies L,
@@ -59,6 +60,30 @@ export const profilePage = {
   valuesTitle: { fr: "Mes valeurs", en: "My values" } satisfies L,
   engagementsTitle: { fr: "Activités et engagements sociaux", en: "Activities & social engagement" } satisfies L,
   tasksLabel: { fr: "Tâches réalisées", en: "Key tasks" } satisfies L,
+};
+
+export const servicesPage = {
+  eyebrow: { fr: "Ce que je propose", en: "What I offer" } satisfies L,
+  title: { fr: "Mes Services", en: "My Services" } satisfies L,
+  subtitle: {
+    fr: "Un accompagnement complet, de la stratégie à la production de contenu, pour donner à votre marque une présence digitale forte et cohérente.",
+    en: "End-to-end support, from strategy to content production, to give your brand a strong and consistent digital presence.",
+  } satisfies L,
+  whatsappCta: { fr: "Discuter sur WhatsApp", en: "Chat on WhatsApp" } satisfies L,
+  whatsappMessage: {
+    fr: "Bonjour Cécile, je suis intéressé·e par vos services et j'aimerais en discuter.",
+    en: "Hi Cécile, I'm interested in your services and would like to discuss them.",
+  } satisfies L,
+  whatsappServiceCta: { fr: "Discuter de ce service", en: "Discuss this service" } satisfies L,
+  whatsappServiceMessage: {
+    fr: "Bonjour Cécile, je suis intéressé·e par votre service « {service} » et j'aimerais en discuter.",
+    en: "Hi Cécile, I'm interested in your \"{service}\" service and would like to discuss it.",
+  } satisfies L,
+  ctaTitle: { fr: "Un projet en tête ?", en: "Got a project in mind?" } satisfies L,
+  ctaText: {
+    fr: "Parlons-en directement sur WhatsApp — je réponds rapidement.",
+    en: "Let's talk about it directly on WhatsApp — I reply quickly.",
+  } satisfies L,
 };
 
 export const projectsPage = {

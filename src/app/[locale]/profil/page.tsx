@@ -50,7 +50,7 @@ export default async function ProfilPage({
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 px-5 py-16 text-center sm:px-8 md:flex-row md:text-left">
           <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-xl">
             <Image
-              src="/images/portraits/front-camera.webp"
+              src="/images/portraits/profile-photo.webp"
               alt={identity.firstName}
               fill
               sizes="160px"

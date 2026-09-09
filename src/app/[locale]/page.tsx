@@ -83,7 +83,11 @@ export default async function HomePage({
             </Link>
           </div>
 
-          <HeroPortrait src="/images/portraits/hero.webp" alt={identity.firstName}>
+          <HeroPortrait
+            src="/images/portraits/hero.webp"
+            alt={identity.firstName}
+            aspect="1086/1448"
+          >
             <FloatingBadge
               className="-left-4 top-4 hidden sm:flex"
               delay={0.1}

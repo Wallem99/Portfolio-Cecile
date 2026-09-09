@@ -16,6 +16,7 @@ export default function Header({ locale }: { locale: Locale }) {
   const links = [
     { href: localeHref(locale, "/"), label: t(nav.home, locale) },
     { href: localeHref(locale, "/profil"), label: t(nav.profile, locale) },
+    { href: localeHref(locale, "/services"), label: t(nav.services, locale) },
     { href: localeHref(locale, "/projets"), label: t(nav.projects, locale) },
     { href: localeHref(locale, "/contact"), label: t(nav.contact, locale) },
   ];
