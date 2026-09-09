@@ -80,6 +80,14 @@ export const projectsPage = {
     fr: "Découvrez la page gérée en cliquant sur le lien ci-dessus.",
     en: "Check out the managed page by clicking the link above.",
   } satisfies L,
+  caseStudyEyebrow: { fr: "Étude de cas", en: "Case study" } satisfies L,
+  caseStudyTitle: {
+    fr: "Le problème, la solution, le résultat",
+    en: "The problem, the solution, the result",
+  } satisfies L,
+  problemLabel: { fr: "Le problème", en: "The problem" } satisfies L,
+  solutionLabel: { fr: "La solution", en: "The solution" } satisfies L,
+  resultLabel: { fr: "Le résultat", en: "The result" } satisfies L,
 };
 
 export const contactPage = {

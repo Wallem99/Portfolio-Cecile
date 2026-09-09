@@ -2,13 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertCircle, Lightbulb, TrendingUp } from "lucide-react";
 import { isLocale, t, localeHref } from "@/lib/i18n";
 import type { Locale } from "@/content/types";
 import { projectsPage } from "@/content/ui";
 import { projects, getProject, type SocialLink } from "@/content/projects";
 import { locales } from "@/lib/i18n";
 import Lightbox from "@/components/Lightbox";
+import AnimatedCard from "@/components/AnimatedCard";
+import AnimatedStat from "@/components/AnimatedStat";
+import FadeInSection from "@/components/FadeInSection";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -131,6 +134,70 @@ export default async function ProjectDetailPage({
             })}
           </div>
         </div>
+      )}
+
+      {project.caseStudy && (
+        <FadeInSection className="mt-14 rounded-3xl border border-border bg-gradient-to-br from-peach-50 to-lilac-100/40 p-6 sm:p-10">
+          <p className="text-xs font-bold uppercase tracking-widest text-orange-600">
+            {t(projectsPage.caseStudyEyebrow, locale)}
+          </p>
+          <h2 className="mt-1 font-heading text-2xl font-extrabold text-ink-900 sm:text-3xl">
+            {t(projectsPage.caseStudyTitle, locale)}
+          </h2>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            <AnimatedCard
+              index={0}
+              className="rounded-2xl border border-border bg-white p-6 shadow-sm"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-rose-100 text-rose-600">
+                <AlertCircle size={20} />
+              </span>
+              <p className="mt-4 text-xs font-bold uppercase tracking-wide text-rose-600">
+                {t(projectsPage.problemLabel, locale)}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                {t(project.caseStudy.problem, locale)}
+              </p>
+            </AnimatedCard>
+
+            <AnimatedCard
+              index={1}
+              className="rounded-2xl border border-border bg-white p-6 shadow-sm"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-orange-600">
+                <Lightbulb size={20} />
+              </span>
+              <p className="mt-4 text-xs font-bold uppercase tracking-wide text-orange-600">
+                {t(projectsPage.solutionLabel, locale)}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                {t(project.caseStudy.solution, locale)}
+              </p>
+            </AnimatedCard>
+
+            <AnimatedCard
+              index={2}
+              className="rounded-2xl border border-border bg-white p-6 shadow-sm"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                <TrendingUp size={20} />
+              </span>
+              <p className="mt-4 text-xs font-bold uppercase tracking-wide text-emerald-600">
+                {t(projectsPage.resultLabel, locale)}
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-ink-700">
+                {t(project.caseStudy.result, locale)}
+              </p>
+            </AnimatedCard>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 gap-6 border-t border-border/70 pt-8 sm:grid-cols-3">
+            {project.caseStudy.metrics.map((m) => (
+              <AnimatedStat key={m.label.fr} value={m.value} label={t(m.label, locale)} />
+            ))}
+          </div>
+        </FadeInSection>
       )}
 
       <div className="mt-12">

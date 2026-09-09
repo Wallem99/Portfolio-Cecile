@@ -66,7 +66,7 @@ export default async function ProfilPage({
             </p>
             <p className="mt-1 text-sm text-ink-500">{t(birth, locale)}</p>
             <a
-              href="/cv-ngo-ntonga-cecile-claude-2025.pdf"
+              href="/api/cv"
               download
               className="focus-ring mt-5 inline-flex items-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white shadow-sm shadow-orange-500/30 transition-colors hover:bg-orange-600"
             >

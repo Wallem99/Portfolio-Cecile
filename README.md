@@ -49,15 +49,28 @@ Copier `.env.example` vers `.env.local` et renseigner :
 
 ```
 RESEND_API_KEY=...
-RESEND_FROM="Portfolio <onboarding@resend.dev>"
+RESEND_FROM="Cécile Claude - Portfolio <contact@tcecile.online>"
 CONTACT_TO_EMAIL=cecilentonga13@gmail.com
 ```
 
-⚠️ Tant qu'aucun domaine n'est vérifié sur Resend, l'expéditeur
-`onboarding@resend.dev` ne peut livrer qu'à l'adresse du **titulaire du
-compte Resend**. Créer le compte Resend avec `cecilentonga13@gmail.com`, ou
-vérifier un domaine, pour recevoir les messages du formulaire à cette
-adresse.
+⚠️ Le domaine `tcecile.online` doit être **vérifié sur Resend**
+(resend.com/domains) avant que l'envoi ne fonctionne pour un destinataire
+autre que le titulaire du compte Resend. Étapes :
+
+1. Sur [resend.com/domains](https://resend.com/domains), cliquer "Add
+   Domain" et saisir `tcecile.online`.
+2. Resend affiche des enregistrements DNS (SPF/TXT, DKIM/CNAME, parfois
+   MX) à ajouter chez le registrar du domaine.
+3. Une fois les enregistrements propagés (quelques minutes à quelques
+   heures), cliquer "Verify" dans Resend — le domaine passe en statut
+   "Verified".
+4. À partir de là, `contact@tcecile.online` (ou toute adresse sur ce
+   domaine) peut envoyer vers n'importe quel destinataire, y compris
+   `cecilentonga13@gmail.com`.
+
+Tant que le domaine n'est pas vérifié, l'API `/api/contact` répond `500`
+(`send_failed`) pour tout destinataire différent du titulaire du compte
+Resend.
 
 ## Build & déploiement
 

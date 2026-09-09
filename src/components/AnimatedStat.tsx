@@ -13,15 +13,18 @@ export default function AnimatedStat({
   label: string;
   icon?: ReactNode;
 }) {
+  // Only values starting with digits (e.g. "9+", "50") get the count-up
+  // treatment. Non-numeric placeholders (e.g. "XX%", pending a real figure)
+  // are rendered as-is — otherwise they'd show a stray leading "0".
   const match = value.match(/^(\d+)(.*)$/);
   const target = match ? parseInt(match[1], 10) : 0;
-  const suffix = match ? match[2] : value;
+  const suffix = match ? match[2] : "";
 
   const [display, setDisplay] = useState(0);
   const [started, setStarted] = useState(false);
 
   function start() {
-    if (started) return;
+    if (started || !match) return;
     setStarted(true);
     animate(0, target, {
       duration: 1.4,
@@ -42,8 +45,14 @@ export default function AnimatedStat({
         </span>
       )}
       <p className="font-heading text-3xl font-extrabold text-orange-600 sm:text-4xl">
-        {display}
-        {suffix}
+        {match ? (
+          <>
+            {display}
+            {suffix}
+          </>
+        ) : (
+          value
+        )}
       </p>
       <p className="mt-1 text-xs font-medium text-ink-500">{label}</p>
     </motion.div>
