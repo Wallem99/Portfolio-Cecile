@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  --color-cream: #fffaf5;
+  --color-peach-50: #fff4ea;
+  --color-peach-100: #fdebdd;
+  --color-peach-200: #fbd9bd;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-lilac-100: #efe7fb;
+  --color-lilac-200: #e0d2f5;
+  --color-ink-900: #16205b;
+  --color-ink-700: #2c3468;
+  --color-ink-500: #5b6291;
+  --color-ink-300: #9aa0c4;
+  --color-border: #f0e4d6;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-ink-900);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--color-cream);
+  --color-peach-50: var(--color-peach-50);
+  --color-peach-100: var(--color-peach-100);
+  --color-peach-200: var(--color-peach-200);
+  --color-orange-400: var(--color-orange-400);
+  --color-orange-500: var(--color-orange-500);
+  --color-orange-600: var(--color-orange-600);
+  --color-lilac-100: var(--color-lilac-100);
+  --color-lilac-200: var(--color-lilac-200);
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-500: var(--color-ink-500);
+  --color-ink-300: var(--color-ink-300);
+  --color-border: var(--color-border);
+  --font-heading: var(--font-jakarta);
+  --font-sans: var(--font-poppins);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-jakarta), var(--font-poppins), sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-orange-500);
+  outline-offset: 3px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Track is duplicated content, so -50% is exactly one full loop. */
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
