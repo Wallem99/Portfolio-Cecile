@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { poppins, jakarta } from "@/fonts";
@@ -34,6 +35,14 @@ export default async function LocaleLayout({
       className={`${poppins.variable} ${jakarta.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8824930651463094"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="flex min-h-full flex-col bg-cream text-ink-900">
         <a
           href="#main-content"
